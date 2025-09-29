@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  scrollbar-width: none;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #5755c5;
+  color: #fff;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 290px 1fr; /* nav | chats | chat window */
+  min-height: 100vh;
+}
+
+.chats-lists-section {
+  scrollbar-width: none;
+}
+
+.main-chat-screen {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar-nav {
+    display: none;
+  }
+  .app {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* nav | chats | chat window */
+    max-height: 100vh;
+  }
+}
