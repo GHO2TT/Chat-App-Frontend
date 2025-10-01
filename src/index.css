@@ -21,10 +21,28 @@
   color: #fff;
 }
 
-.app {
-  display: grid;
-  grid-template-columns: 290px 1fr; /* nav | chats | chat window */
-  min-height: 100vh;
+.chat-window {
+  background: hsla(0, 11%, 40%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(0, 11%, 40%, 1) 0%,
+    hsla(253, 8%, 23%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(0, 11%, 40%, 1) 0%,
+    hsla(253, 8%, 23%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(0, 11%, 40%, 1) 0%,
+    hsla(253, 8%, 23%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#715A5A", endColorstr="#37353E", GradientType=1 );
 }
 
 .chats-lists-section {
@@ -49,13 +67,10 @@
   }
 }
 
-@media (max-width: 700px) {
-  .sidebar-nav {
-    display: none;
-  }
+/* @media (max-width: 800px) {
   .app {
     display: grid;
-    grid-template-columns: 100px 1fr; /* nav | chats | chat window */
+    grid-template-columns: 300px 1fr; /* nav | chats | chat window 
     max-height: 100vh;
   }
-}
+} */

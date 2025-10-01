@@ -1,12 +1,13 @@
 import pfp from "../assets/download.png";
 import ReceiverChatBubble from "./UI/ReceiverChatBubble";
 import SenderChatBubble from "./UI/SenderChatBubble";
+import SendIcon from "./icons/SendSvgIcon";
 
 const ChatScreen = () => {
   return (
     <div className="flex flex-col justify-between h-screen">
       {/* Header */}
-      <div className="flex items-center p-2 h-[85px] border-b border-gray-600">
+      <div className="flex items-center p-2 h-[85px]">
         <img
           src={pfp}
           alt="profile Picture"
@@ -16,7 +17,7 @@ const ChatScreen = () => {
       </div>
 
       {/* Chat area */}
-      <div className="main-chat-screen flex-grow overflow-y-auto scrollbar-hide bg-gray-700 p-3 rounded-lg">
+      <div className="main-chat-screen flex-grow overflow-y-auto scrollbar-hide bg-[#37353E] p-3 rounded-t-lg">
         <ReceiverChatBubble message={"Hey!"} />
 
         <SenderChatBubble
@@ -45,8 +46,8 @@ const ChatScreen = () => {
             className="bg-cyan-100 w-[80%] p-2 rounded-2xl text-black"
             placeholder="Type a message..."
           />
-          <button className="ml-2 bg-green-400 rounded-2xl h-[40px] w-[70px] hover:bg-green-600">
-            Send
+          <button className="ml-2 bg-green-400 rounded-2xl h-[40px] w-[70px] hover:bg-green-600 flex justify-center items-center">
+            <SendIcon height={40} width={40} fill={"none"} stroke={"white"} />
           </button>
         </div>
       </div>
