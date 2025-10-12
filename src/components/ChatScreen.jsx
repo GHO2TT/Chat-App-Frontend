@@ -2,8 +2,32 @@ import pfp from "../assets/download.png";
 import ReceiverChatBubble from "./UI/ReceiverChatBubble";
 import SenderChatBubble from "./UI/SenderChatBubble";
 import SendIcon from "./icons/SendSvgIcon";
+import axios from "../../utils/axios";
+import { useEffect, useState } from "react";
 
 const ChatScreen = () => {
+  const [isLoading, setLoading] = useState(false);
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get("/api/v1/message")
+      .then((res) => {
+        setMessages(res.data);
+        console.log(res.data, "Line 13 ChatScreen.jsx");
+        setLoading(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader"></div>
+      </div>
+    );
+
   return (
     <div className="flex flex-col justify-between h-screen">
       {/* Header */}
@@ -18,6 +42,17 @@ const ChatScreen = () => {
 
       {/* Chat area */}
       <div className="main-chat-screen flex-grow overflow-y-auto scrollbar-hide bg-[#37353E] p-3 rounded-t-lg">
+        {messages.map((message) => {
+          if (message.senderId === "user1") {
+            return (
+              <ReceiverChatBubble key={message._id} message={message.content} />
+            );
+          }
+          return (
+            <SenderChatBubble key={message._id} message={message.content} />
+          );
+        })}
+
         <ReceiverChatBubble message={"Hey!"} />
 
         <SenderChatBubble
