@@ -1,30 +1,33 @@
 import LoggedInScreen from "./components/LoggedInScreen";
 import AuthScreen from "./components/AuthScreen";
 import ErrorPage from "./components/ErrorPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       <ProtectedRoute>
-//         <LoggedInScreen />
-//       </ProtectedRoute>
-//     ),
-//     errorElement: <ErrorPage />,
-//   },
-//   {
-//     path: "/login",
-//     element: <Login />,
-//   },
-// ]);
+import ForgetPassword from "./components/ForgetPassword";
+import ProtectAuthRoute from "./components/ProtectAuthRoute";
 
 const router = createBrowserRouter([
   {
     path: "/auth",
-    element: <AuthScreen />,
+    element: (
+      <ProtectAuthRoute>
+        <AuthScreen />
+      </ProtectAuthRoute>
+    ),
   },
-  { path: "/", element: <LoggedInScreen />, errorElement: <ErrorPage /> },
+  {
+    path: "/forgetpassword",
+    element: <ForgetPassword />,
+  },
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <LoggedInScreen />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 function App() {

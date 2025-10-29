@@ -1,6 +1,6 @@
 import React from "react";
 
-const settingsSvgIcon = ({ fill, width, height, stroke, strokeWidth }) => {
+const SettingsSvgIcon = ({ fill, width, height, stroke, strokeWidth }) => {
   return (
     <svg
       width={width}
@@ -19,4 +19,4 @@ const settingsSvgIcon = ({ fill, width, height, stroke, strokeWidth }) => {
   );
 };
 
-export default settingsSvgIcon;
+export default SettingsSvgIcon;
